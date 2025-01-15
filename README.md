@@ -1,8 +1,12 @@
 # Steamdata SDK for PHP
 
+[![Composer Downloads](https://img.shields.io/packagist/dt/cubicnode/steamdata-sdk-php.svg)](https://packagist.org/packages/cubicnode/steamdata-sdk-php)
+![GitHub License](https://img.shields.io/github/license/CubicNode/steamdata-sdk-php)
+[![codecov](https://codecov.io/gh/CubicNode/steamdata-sdk-php/branch/master/graph/badge.svg?token=RS9KPZIO77)](https://codecov.io/gh/CubicNode/steamdata-sdk-php)
+
 这是适用于 PHP 的 Steamdata SDK，通过这个 SDK，您可以方便的在您的 PHP 项目中使用 Steamdata 的 API。
 
-此包支持的 PHP 版本同步官方支持的 PHP 版本。
+此包支持的 PHP 版本同步官方支持的 PHP 版本（不含 PHP 8.1）。
 
 [https://www.php.net/supported-versions.php](https://www.php.net/supported-versions.php)
 
