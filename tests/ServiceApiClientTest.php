@@ -2,17 +2,12 @@
 
 declare(strict_types=1);
 
-use Cubicnode\Cloud\Steamdata\Tests\TestCase;
-use Cubicnode\Cloud\Steamdata\ServiceApiConfig;
-use Cubicnode\Cloud\Steamdata\Enums\ApiVersion;
-use Cubicnode\Cloud\Steamdata\Enums\Region;
-use Cubicnode\Cloud\Steamdata\Enums\SignatureVersion;
-use Symfony\Component\Uid\Ulid;
-use Cubicnode\Cloud\Steamdata\ServiceApiClient;
-use Cubicnode\Cloud\Steamdata\Enums\ServiceType;
 use Cubicnode\Cloud\Steamdata\Enums\ServiceRoutes\ImageModeration;
 use Cubicnode\Cloud\Steamdata\Enums\ServiceRoutes\IpInfo;
+use Cubicnode\Cloud\Steamdata\Enums\ServiceType;
 use Cubicnode\Cloud\Steamdata\Exceptions\ServiceApiException;
+use Cubicnode\Cloud\Steamdata\ServiceApiClient;
+use Cubicnode\Cloud\Steamdata\Tests\TestCase;
 
 class ServiceApiClientTest extends TestCase
 {
@@ -47,23 +42,23 @@ class ServiceApiClientTest extends TestCase
     public function testThenMethod()
     {
         $this->expectException(ServiceApiException::class);
-        
+
         $serviceApiClient = new ServiceApiClient($this->createServiceApiConfig());
-        $serviceApiClient->then(function() {});
+        $serviceApiClient->then(function () {});
     }
 
     public function testCatchMethod()
     {
         $this->expectException(ServiceApiException::class);
-        
+
         $serviceApiClient = new ServiceApiClient($this->createServiceApiConfig());
-        $serviceApiClient->catch(function() {});
+        $serviceApiClient->catch(function () {});
     }
 
     public function testWaitMethod()
     {
         $this->expectException(ServiceApiException::class);
-        
+
         $serviceApiClient = new ServiceApiClient($this->createServiceApiConfig());
         $serviceApiClient->wait();
     }

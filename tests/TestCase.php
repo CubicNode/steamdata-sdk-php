@@ -19,8 +19,6 @@ use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase as PhpUnitTestCase;
 use Symfony\Component\Uid\Ulid;
 
-use function imagejpeg;
-
 class TestCase extends PhpUnitTestCase
 {
     public FakerGenerator $faker;

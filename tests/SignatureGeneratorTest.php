@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Cubicnode\Cloud\Steamdata\Tests\TestCase;
 use Cubicnode\Cloud\Steamdata\SignatureGenerator;
+use Cubicnode\Cloud\Steamdata\Tests\TestCase;
 use GuzzleHttp\Psr7\Request;
 use InvalidArgumentException;
 

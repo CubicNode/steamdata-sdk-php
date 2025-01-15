@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use Cubicnode\Cloud\Steamdata\Tests\TestCase;
-use Cubicnode\Cloud\Steamdata\ServiceApiConfig;
 use Cubicnode\Cloud\Steamdata\Enums\ApiVersion;
 use Cubicnode\Cloud\Steamdata\Enums\Region;
 use Cubicnode\Cloud\Steamdata\Enums\SignatureVersion;
+use Cubicnode\Cloud\Steamdata\ServiceApiConfig;
+use Cubicnode\Cloud\Steamdata\Tests\TestCase;
 use Symfony\Component\Uid\Ulid;
 
 class ServiceApiConfigTest extends TestCase
@@ -28,7 +28,7 @@ class ServiceApiConfigTest extends TestCase
         $serviceApiConfig->setApiVersion($apiVersion);
         $serviceApiConfig->setSignatureVersion($signatureVersion);
         $serviceApiConfig->setAccessKeyId($accessKeyId);
-        $serviceApiConfig->setSecretAccessKey($secretAccessKey);    
+        $serviceApiConfig->setSecretAccessKey($secretAccessKey);
         $serviceApiConfig->setInstanceId($instanceId);
 
         $this->assertEquals($gatewayUrl, $serviceApiConfig->getGatewayUrl());
