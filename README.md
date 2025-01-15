@@ -2,6 +2,19 @@
 
 这是适用于 PHP 的 Steamdata SDK，通过这个 SDK，您可以方便的在您的 PHP 项目中使用 Steamdata 的 API。
 
+此包支持的 PHP 版本同步官方支持的 PHP 版本。
+
+[https://www.php.net/supported-versions.php](https://www.php.net/supported-versions.php)
+
+
+## 安装
+
+仅能通过 `composer` 安装。
+```bash
+composer require cubicnode/steamdata-sdk-php
+```
+
+
 ## 使用
 
 ```php
