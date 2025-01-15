@@ -1,0 +1,30 @@
+FROM php:8.3-cli
+
+ENV COMPOSER_ALLOW_SUPERUSER=1 \
+    XDEBUG_MODE=coverage
+
+RUN apt-get update && apt-get install -y \
+    libtool \
+    libzip-dev \
+    libgd-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype-dev \
+    git
+
+RUN docker-php-ext-install zip \
+    && docker-php-ext-install gd
+
+RUN pecl channel-update pecl.php.net
+
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
+
+RUN curl -sLS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
+
+WORKDIR /var/lib
+COPY . .
+
+RUN composer install
+
+CMD ["tail", "-f", "/dev/null"]

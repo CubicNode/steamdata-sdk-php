@@ -1,0 +1,53 @@
+<?php
+
+declare(strict_types=1);
+
+use Cubicnode\Cloud\Steamdata\Tests\TestCase;
+use Cubicnode\Cloud\Steamdata\SignatureGenerator;
+use GuzzleHttp\Psr7\Request;
+use InvalidArgumentException;
+
+class SignatureGeneratorTest extends TestCase
+{
+    public function testCanonicalHttpMethod()
+    {
+        $serviceApiConfig = $this->createServiceApiConfig();
+
+        $request = new Request('GET', 'https://example.com');
+        $signatureGenerator = new SignatureGenerator($serviceApiConfig, $request);
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid HTTP method.');
+
+        $signatureGenerator->canonicalHttpMethod('invalid');
+    }
+
+    public function testCanonicalUri()
+    {
+        $serviceApiConfig = $this->createServiceApiConfig();
+
+        $request = new Request('GET', 'https://example.com');
+        $signatureGenerator = new SignatureGenerator($serviceApiConfig, $request);
+        $signatureGenerator->canonicalUri('');
+
+        $this->assertEquals('/', $signatureGenerator->canonicalUri(''));
+    }
+
+    public function testCanonicalHeaders()
+    {
+        $serviceApiConfig = $this->createServiceApiConfig();
+
+        $instanceId = $this->faker->uuid();
+        $request = new Request('GET', 'https://example.com', [
+            'x-sd-instance-id' => $instanceId,
+        ]);
+        $signatureGenerator = new SignatureGenerator($serviceApiConfig, $request);
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Missing necessary headers.');
+
+        $signatureGenerator->canonicalHeaders([
+            'x-sd-instance-id' => $instanceId,
+        ], 'x-sd-instance-id');
+    }
+}

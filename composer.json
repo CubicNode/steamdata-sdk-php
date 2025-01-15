@@ -1,0 +1,36 @@
+{
+    "name": "cubicnode/steamdata-sdk-php",
+    "description": "Steamdata SDK for PHP",
+    "type": "library",
+    "license": "Apache-2.0",
+    "autoload": {
+        "psr-4": {
+            "Cubicnode\\Cloud\\Steamdata\\": "src/"
+        },
+        "files": [
+            "src/Functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cubicnode\\Cloud\\Steamdata\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Cubicnode company steamdata project team"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.1",
+        "guzzlehttp/guzzle": "^7.9",
+        "nesbot/carbon": "^3.8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5",
+        "friendsofphp/php-cs-fixer": "^3.67",
+        "fakerphp/faker": "^1.24",
+        "symfony/uid": "^7.2"
+    }
+}
