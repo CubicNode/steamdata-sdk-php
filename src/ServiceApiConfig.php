@@ -17,37 +17,37 @@ class ServiceApiConfig
     ) {
     }
 
-    public function getGatewayUrl(): string
+    public function getGatewayUrl(): ?string
     {
         return $this->gatewayUrl;
     }
 
-    public function getRegion(): string
+    public function getRegion(): ?string
     {
         return $this->region;
     }
 
-    public function getApiVersion(): string
+    public function getApiVersion(): ?string
     {
         return $this->apiVersion;
     }
 
-    public function getSignatureVersion(): string
+    public function getSignatureVersion(): ?string
     {
         return $this->signatureVersion;
     }
 
-    public function getAccessKeyId(): string
+    public function getAccessKeyId(): ?string
     {
         return $this->accessKeyId;
     }
 
-    public function getSecretAccessKey(): string
+    public function getSecretAccessKey(): ?string
     {
         return $this->secretAccessKey;
     }
 
-    public function getInstanceId(): string
+    public function getInstanceId(): ?string
     {
         return $this->instanceId;
     }
