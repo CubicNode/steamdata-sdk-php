@@ -52,38 +52,52 @@ class ServiceApiConfig
         return $this->instanceId;
     }
 
-    public function setGatewayUrl(string $gatewayUrl): void
+    public function setGatewayUrl(string $gatewayUrl): self
     {
         $this->gatewayUrl = $gatewayUrl;
+
+        return $this;
     }
 
-    public function setRegion(string $region): void
+    public function setRegion(string $region): self
     {
         $this->region = $region;
+
+        return $this;
     }
 
-    public function setApiVersion(string $apiVersion): void
+    public function setApiVersion(string $apiVersion): self
     {
         $this->apiVersion = $apiVersion;
+
+        return $this;
     }
 
-    public function setSignatureVersion(string $signatureVersion): void
+    public function setSignatureVersion(string $signatureVersion): self
     {
         $this->signatureVersion = $signatureVersion;
+
+        return $this;
     }
 
-    public function setAccessKeyId(string $accessKeyId): void
+    public function setAccessKeyId(string $accessKeyId): self
     {
         $this->accessKeyId = $accessKeyId;
+
+        return $this;
     }
 
-    public function setSecretAccessKey(string $secretAccessKey): void
+    public function setSecretAccessKey(string $secretAccessKey): self
     {
         $this->secretAccessKey = $secretAccessKey;
+
+        return $this;
     }
 
-    public function setInstanceId(string $instanceId): void
+    public function setInstanceId(string $instanceId): self
     {
         $this->instanceId = $instanceId;
+
+        return $this;
     }
 }
