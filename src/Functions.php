@@ -52,7 +52,6 @@ function create_request_headers(ServiceApiConfig $serviceApiConfig, ?array $head
         'x-sd-datetime' => Carbon::now('UTC')->format('Ymd\THis\Z'),
         'x-sd-instance-id' => $serviceApiConfig->getInstanceId(),
         'accept' => 'application/json',
-        'accept-encoding' => 'gzip, deflate, br',
         'content-type' => 'application/json',
     ], $headers ?? []) : $headers;
 }
