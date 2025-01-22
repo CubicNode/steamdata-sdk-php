@@ -41,7 +41,7 @@ class ImageModeration
         $request = $request->withHeader('content-type', 'multipart/form-data; boundary='.$request->getBody()->getBoundary());
 
         $signatureGenerator = new SignatureGenerator($this->serviceApiConfig, $request);
-        $request = $request->withHeader('authorization', $signatureGenerator->setPayload(json_encode((object) []))->createAuthorizationHeader());
+        $request = $request->withHeader('authorization', $signatureGenerator->createAuthorizationHeader());
 
         return $this->client->sendAsync($request);
     }
@@ -70,10 +70,7 @@ class ImageModeration
         $request = $request->withHeader('content-type', 'multipart/form-data; boundary='.$request->getBody()->getBoundary());
 
         $signatureGenerator = new SignatureGenerator($this->serviceApiConfig, $request);
-        $request = $request->withHeader('authorization', $signatureGenerator->setPayload(json_encode([
-            'callback_url' => $callbackUrl,
-            'marker_id' => $markerId,
-        ], JSON_UNESCAPED_SLASHES))->createAuthorizationHeader());
+        $request = $request->withHeader('authorization', $signatureGenerator->createAuthorizationHeader());
 
         return $this->client->sendAsync($request);
     }
