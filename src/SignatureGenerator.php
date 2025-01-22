@@ -28,7 +28,7 @@ class SignatureGenerator
             ImageModerationRoute::GET_IMAGE_SCORE_ASYNC->value => ServiceName::IMAGE_MODERATION->value,
             IpInfoRoute::GET_IP_GEOLOCATION->value => ServiceName::IP_INFO->value,
             IpInfoRoute::GET_IP_ASN->value => ServiceName::IP_INFO->value,
-            default => null,
+            default => throw new InvalidArgumentException('Invalid service route.'),
         };
     }
 
