@@ -10,6 +10,17 @@ use InvalidArgumentException;
 
 class SignatureGeneratorTest extends TestCase
 {
+    public function testConstruct()
+    {
+        $serviceApiConfig = $this->createServiceApiConfig();
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid service route.');
+
+        $request = new Request('GET', 'https://example.com');
+        new SignatureGenerator($serviceApiConfig, $request);
+    }
+
     public function testCanonicalHttpMethod()
     {
         $serviceApiConfig = $this->createServiceApiConfig();
