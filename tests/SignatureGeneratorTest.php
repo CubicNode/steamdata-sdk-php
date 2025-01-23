@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Cubicnode\Cloud\Steamdata\Enums\ServiceRoutes\ImageModeration;
 use Cubicnode\Cloud\Steamdata\SignatureGenerator;
 use Cubicnode\Cloud\Steamdata\Tests\TestCase;
 use GuzzleHttp\Psr7\Request;
@@ -13,7 +14,7 @@ class SignatureGeneratorTest extends TestCase
     {
         $serviceApiConfig = $this->createServiceApiConfig();
 
-        $request = new Request('GET', 'https://example.com');
+        $request = new Request('GET', 'https://example.com'.ImageModeration::GET_IMAGE_SCORE->value);
         $signatureGenerator = new SignatureGenerator($serviceApiConfig, $request);
 
         $this->expectException(InvalidArgumentException::class);
@@ -26,7 +27,7 @@ class SignatureGeneratorTest extends TestCase
     {
         $serviceApiConfig = $this->createServiceApiConfig();
 
-        $request = new Request('GET', 'https://example.com');
+        $request = new Request('GET', 'https://example.com'.ImageModeration::GET_IMAGE_SCORE->value);
         $signatureGenerator = new SignatureGenerator($serviceApiConfig, $request);
         $signatureGenerator->canonicalUri('');
 
@@ -38,7 +39,7 @@ class SignatureGeneratorTest extends TestCase
         $serviceApiConfig = $this->createServiceApiConfig();
 
         $instanceId = $this->faker->uuid();
-        $request = new Request('GET', 'https://example.com', [
+        $request = new Request('GET', 'https://example.com'.ImageModeration::GET_IMAGE_SCORE->value, [
             'x-sd-instance-id' => $instanceId,
         ]);
         $signatureGenerator = new SignatureGenerator($serviceApiConfig, $request);
