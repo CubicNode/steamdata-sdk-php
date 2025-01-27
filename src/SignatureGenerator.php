@@ -137,6 +137,14 @@ class SignatureGenerator
         return implode("\n", $canonicalHeaders);
     }
 
+    public function canonicalSignedHeaders(string $signedHeaders)
+    {
+        $headers = explode(';', $signedHeaders);
+        sort($headers);
+
+        return implode(';', $headers);
+    }
+
     public function hashPayload(string $payload): string
     {
         return hash('sha256', $payload);
@@ -155,7 +163,7 @@ class SignatureGenerator
             $this->canonicalUri($uri),
             $this->canonicalQueryString($queryString),
             $this->canonicalHeaders($headers, $signedHeaders),
-            $signedHeaders,
+            $this->canonicalSignedHeaders($signedHeaders),
             $this->hashPayload($payload),
         ]));
     }
@@ -222,6 +230,7 @@ class SignatureGenerator
             foreach ($formattedHeaders as $key => $value) {
                 $signedHeaders[] = $key;
             }
+            sort($signedHeaders);
 
             return implode(';', $signedHeaders);
         };
