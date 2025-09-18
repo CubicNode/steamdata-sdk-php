@@ -87,12 +87,12 @@ class ServiceApiClient
         return $this;
     }
 
-    public function wait(): void
+    public function wait(): mixed
     {
         if ($this->promise === null) {
             throw new ServiceApiException('No promise to wait for');
         }
 
-        $this->promise->wait();
+        return $this->promise->wait();
     }
 }
